@@ -88,6 +88,8 @@ const createMessageBlock = ({ titleText, prUrl, prTitle, labels }) => {
 function getReviewerInfo() {
   try {
     const context = github.context;
+    console.log('context', context)
+    console.log('context.input', context['input'])
     const slackUserInfo = JSON.parse(JSON.stringify(context.inputs.slackUserInfoJson));
 
     let blocks = [];
