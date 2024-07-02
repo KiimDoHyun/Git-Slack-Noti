@@ -91,7 +91,7 @@ function getReviewerInfo() {
     const slackUserInfo1 = core.getInput('slackUserInfoJson');
     console.log('slackUserInfo', slackUserInfo1)
     console.log('slackUserInfo', typeof slackUserInfo1)
-    console.log('slackUserInfo', JSON.parse(slackUserInfo1));
+    console.log('slackUserInfo', JSON.parse(slackUserInfo1 || '{}'));
 
     const slackBotToken = core.getInput('slackBotToken');
     console.log('slackBotToken', slackBotToken)
