@@ -91,6 +91,7 @@ function getReviewerInfo(input) {
     console.log('########## slackUserInfoJson: ', slackUserInfoJson);
     console.log('########## slackUserInfoJson: ', JSON.stringify(slackUserInfoJson));
     console.log('########## typeof slackUserInfoJson: ', typeof slackUserInfoJson);
+    console.log('########## slackUserInfoJson Object: ', JSON.parse(slackUserInfoJson));
 
     return;
 
