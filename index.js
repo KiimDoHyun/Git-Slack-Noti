@@ -104,7 +104,7 @@ function getReviewerInfo(input) {
         const commentUser = context.payload.comment.user.login;
         const prOwner = context.payload.issue.user.login;
 
-        if (commentUser === prOwner) return;
+        // if (commentUser === prOwner) return;
 
         if (!slackUserInfo[prOwner]) {
           console.log(`[댓글 등록 단계 메세지 전송 실패] ${commentUser}의 정보가 없습니다.`);
