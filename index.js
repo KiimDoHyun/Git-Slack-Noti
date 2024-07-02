@@ -89,7 +89,8 @@ function getReviewerInfo() {
   try {
     const context = github.context;
     console.log('context', context)
-    console.log('context.input', context['input'])
+    console.log('context.inputs', context['inputs'])
+    return;
     const slackUserInfo = JSON.parse(JSON.stringify(context.inputs.slackUserInfoJson));
 
     let blocks = [];
