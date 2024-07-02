@@ -87,11 +87,10 @@ const createMessageBlock = ({ titleText, prUrl, prTitle, labels }) => {
 
 function getReviewerInfo(input) {
   try {
-    console.log('input', input);
-
-    // const slackUserInfo = require('./slackUserInfo.json');
     const slackUserInfoJson = core.getInput('slackUserInfoJson');
     console.log('########## slackUserInfoJson: ', slackUserInfoJson);
+    console.log('########## slackUserInfoJson: ', JSON.stringify(slackUserInfoJson));
+    console.log('########## typeof slackUserInfoJson: ', typeof slackUserInfoJson);
 
     return;
 
