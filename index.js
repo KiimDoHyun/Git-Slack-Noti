@@ -88,13 +88,11 @@ const createMessageBlock = ({ titleText, prUrl, prTitle, labels }) => {
 function getReviewerInfo(input) {
   try {
     const slackUserInfoJson = core.getInput('slackUserInfoJson');
-    console.log('########## slackUserInfoJson: ', slackUserInfoJson);
-    console.log('########## slackUserInfoJson: ', JSON.stringify(slackUserInfoJson));
-    console.log('########## typeof slackUserInfoJson: ', typeof slackUserInfoJson);
-    console.log('########## slackUserInfoJson Object: ', JSON.parse(slackUserInfoJson));
-
-    return;
-
+    if(!slackUserInfoJson) {
+        console.log(`[사용자 정보 읽기 단계] 사용자 정보 json 을 읽을 수 없습니다.`)
+        return;
+    }
+    const slackUserInfo = JSON.parse(slackUserInfoJson);
     const context = github.context;
 
     let blocks = [];
