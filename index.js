@@ -2,8 +2,8 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 require('dotenv').config();
 
-// const slackUserInfo = require('../json/slackUserInfo.json');
-
+const slackUserInfo = require('./slackUserInfo.json');
+const slackBotToken = core.getInput('slackBotToken');
 /*
 interface labels {
   color: string;
@@ -17,12 +17,12 @@ interface labels {
 */
 
 const sendSlackMessage = ({ blocks, channelId, text = '' }) => {
-  const accessToken = process.env.SLACK_API_TOKEN; // Bearer 토큰
+//   const accessToken = process.env.SLACK_API_TOKEN; // Bearer 토큰
   fetch(`https://slack.com/api/chat.postMessage`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
-      Authorization: `Bearer ${accessToken}`, // 헤더에 Bearer 토큰 추가
+      Authorization: `Bearer ${slackBotToken}`, // 헤더에 Bearer 토큰 추가
     },
     body: JSON.stringify({
       channel: channelId,
@@ -85,23 +85,11 @@ const createMessageBlock = ({ titleText, prUrl, prTitle, labels }) => {
   return blocks;
 };
 
-function getReviewerInfo() {
+function getReviewerInfo(input) {
   try {
+    console.log('input', input);
     const context = github.context;
-    const slackUserInfo1 = core.getInput('slackUserInfoJson');
-    console.log('slackUserInfo', slackUserInfo1)
-    console.log('slackUserInfo', typeof slackUserInfo1)
-    console.log('slackUserInfo', JSON.parse(slackUserInfo1 || '{}'));
-
     const slackBotToken = core.getInput('slackBotToken');
-    console.log('slackBotToken', slackBotToken)
-
-
-    console.log('github', github)
-    console.log('context', context)
-    console.log('context.inputs', context['inputs'])
-    return;
-    const slackUserInfo = JSON.parse(JSON.stringify(context.inputs.slackUserInfoJson));
 
     let blocks = [];
     let titleText = '';
