@@ -88,6 +88,16 @@ const createMessageBlock = ({ titleText, prUrl, prTitle, labels }) => {
 function getReviewerInfo() {
   try {
     const context = github.context;
+    const slackUserInfo1 = core.getInput('slackUserInfoJson');
+    console.log('slackUserInfo', slackUserInfo1)
+    console.log('slackUserInfo', typeof slackUserInfo1)
+    console.log('slackUserInfo', JSON.parse(slackUserInfo1));
+
+    const slackBotToken = core.getInput('slackBotToken');
+    console.log('slackBotToken', slackBotToken)
+
+
+    console.log('github', github)
     console.log('context', context)
     console.log('context.inputs', context['inputs'])
     return;
