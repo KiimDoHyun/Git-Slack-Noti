@@ -1,23 +1,9 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-require('dotenv').config();
 
-// const slackUserInfo = require('./slackUserInfo.json');
 const slackBotToken = core.getInput('slackBotToken');
-/*
-interface labels {
-  color: string;
-  default: boolean;
-  description: string;
-  id: number;
-  name: string;
-  node_id: string;
-  url: string;
-}
-*/
 
 const sendSlackMessage = ({ blocks, channelId, text = '' }) => {
-//   const accessToken = process.env.SLACK_API_TOKEN; // Bearer 토큰
   fetch(`https://slack.com/api/chat.postMessage`, {
     method: 'POST',
     headers: {
