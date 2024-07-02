@@ -5,6 +5,9 @@ inputs:
   slackBotToken:
     description: "slack bot token for messaging"
     required: true
+  slackUserInfoJson:
+    description: "git/slack user info for messaging"
+    required: true
 
 runs:
   using: 'node16'
