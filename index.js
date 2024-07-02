@@ -2,7 +2,7 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 require('dotenv').config();
 
-const slackUserInfo = require('./slackUserInfo.json');
+// const slackUserInfo = require('./slackUserInfo.json');
 const slackBotToken = core.getInput('slackBotToken');
 /*
 interface labels {
@@ -88,8 +88,14 @@ const createMessageBlock = ({ titleText, prUrl, prTitle, labels }) => {
 function getReviewerInfo(input) {
   try {
     console.log('input', input);
+
+    // const slackUserInfo = require('./slackUserInfo.json');
+    const slackUserInfoJson = core.getInput('slackUserInfoJson');
+    console.log('########## slackUserInfoJson: ', slackUserInfoJson);
+
+    return;
+
     const context = github.context;
-    const slackBotToken = core.getInput('slackBotToken');
 
     let blocks = [];
     let titleText = '';
